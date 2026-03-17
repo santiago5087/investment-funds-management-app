@@ -1,0 +1,84 @@
+@use 'variables' as *;
+
+.confirm-dialog {
+  min-width: 400px;
+  max-width: 500px;
+}
+
+.dialog-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 24px 24px 16px;
+  
+  &.danger {
+    color: $error;
+    
+    .dialog-icon {
+      background-color: rgba($error, 0.1);
+      color: $error;
+    }
+  }
+  
+  &.warning {
+    color: $warning;
+    
+    .dialog-icon {
+      background-color: rgba($warning, 0.1);
+      color: $warning;
+    }
+  }
+}
+
+.dialog-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  background-color: rgba($primary, 0.1);
+  color: $primary;
+}
+
+h2[mat-dialog-title] {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  flex: 1;
+}
+
+mat-dialog-content {
+  padding: 0 24px 24px;
+}
+
+.dialog-message {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: $text-secondary;
+  margin: 0;
+}
+
+mat-dialog-actions {
+  padding: 16px 24px 24px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin: 0;
+}
+
+@media (max-width: 600px) {
+  .confirm-dialog {
+    min-width: 280px;
+    max-width: 90vw;
+  }
+  
+  mat-dialog-actions {
+    flex-direction: column-reverse;
+    
+    app-button {
+      width: 100%;
+    }
+  }
+}

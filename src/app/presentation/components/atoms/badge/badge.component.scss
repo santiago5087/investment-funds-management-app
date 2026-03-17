@@ -1,0 +1,27 @@
+@use 'variables' as *;
+
+mat-chip {
+  font-size: 0.75rem !important;
+  min-height: 24px !important;
+  padding: 0 8px !important;
+}
+
+.badge-info {
+  --mdc-chip-elevated-container-color: #{$info-light};
+  --mdc-chip-label-text-color: #{$primary};
+}
+
+.badge-success {
+  --mdc-chip-elevated-container-color: #{$success-light};
+  --mdc-chip-label-text-color: #{$success};
+}
+
+.badge-warning {
+  --mdc-chip-elevated-container-color: #{$warning-light};
+  --mdc-chip-label-text-color: #{$warning};
+}
+
+.badge-danger {
+  --mdc-chip-elevated-container-color: #{$error-light};
+  --mdc-chip-label-text-color: #{$error};
+}

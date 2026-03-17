@@ -1,0 +1,57 @@
+@use 'variables' as *;
+
+div[role="alert"] {
+  padding: 16px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.alert-content {
+  flex: 1;
+}
+
+.alert-close {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+
+.alert-close:hover {
+  opacity: 1;
+}
+
+.alert-error {
+  background: $error-light;
+  color: $error-dark;
+  border: 1px solid $error-border;
+}
+
+.alert-success {
+  background: $success-light;
+  color: $success-dark;
+  border: 1px solid $success-border;
+}
+
+.alert-warning {
+  background: $warning-light;
+  color: $warning-dark;
+  border: 1px solid $warning-border;
+}
+
+.alert-info {
+  background: $info-light;
+  color: $info;
+  border: 1px solid $info-border;
+}

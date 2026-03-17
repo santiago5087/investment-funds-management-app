@@ -1,0 +1,98 @@
+@use 'variables' as *;
+
+.transactions-page {
+  padding: 24px;
+  max-width: 1400px;
+  margin: 0 auto;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.page-header {
+  margin-bottom: 40px;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.title-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.header-icon {
+  font-size: 48px;
+  color: $primary;
+  background: linear-gradient(135deg, rgba($primary, 0.1) 0%, rgba($primary, 0.05) 100%);
+  padding: 16px;
+  border-radius: 16px;
+}
+
+h1 {
+  margin: 0 0 4px 0;
+  font-size: 2rem;
+  color: $text-primary;
+  font-weight: 700;
+}
+
+.subtitle {
+  margin: 0;
+  color: $text-secondary;
+  font-size: 1rem;
+}
+
+.stats-summary {
+  display: flex;
+  gap: 16px;
+}
+
+.stat-chip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, $primary 0%, $primary-dark 100%);
+  color: $text-on-primary;
+  padding: 12px 20px;
+  border-radius: 24px;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba($primary, 0.3);
+  
+  .material-icons {
+    font-size: 20px;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .transactions-page {
+    padding: 16px;
+  }
+  
+  .header-content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+  
+  .stat-chip {
+    font-size: 0.875rem;
+  }
+}

@@ -1,0 +1,18 @@
+@if (loading()) {
+  <app-spinner />
+} @else if (funds().length === 0) {
+  <div class="empty-state">
+    <p>No hay fondos disponibles</p>
+  </div>
+} @else {
+  <div class="funds-grid">
+    @for (fund of funds(); track fund.id) {
+      <app-fund-card
+        [fund]="fund"
+        [isSubscribed]="isSubscribed(fund.id)"
+        (onSubscribe)="onSubscribe.emit($event)"
+        (onCancel)="onCancel.emit($event)"
+      />
+    }
+  </div>
+}

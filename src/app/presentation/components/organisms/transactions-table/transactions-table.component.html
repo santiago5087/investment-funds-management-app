@@ -1,0 +1,50 @@
+@if (transactions().length === 0) {
+  <div class="empty-state">
+    <div class="empty-icon">
+      <span class="material-icons">receipt_long</span>
+    </div>
+    <h2>No hay transacciones registradas</h2>
+    <p>Realiza tu primera inversión para ver tu historial</p>
+  </div>
+} @else {
+  <div class="transactions-container">
+    @for (transaction of transactions(); track transaction.id) {
+      <div class="transaction-card" [class.subscription-type]="transaction.type === 'subscription'" [class.cancellation-type]="transaction.type === 'cancellation'">
+        <div class="transaction-icon">
+          <span class="material-icons">
+            {{ transaction.type === 'subscription' ? 'add_circle' : 'cancel' }}
+          </span>
+        </div>
+        
+        <div class="transaction-content">
+          <div class="transaction-header">
+            <h3 class="fund-name">{{ transaction.fundName }}</h3>
+            <span class="transaction-amount" [class.negative]="transaction.type === 'subscription'" [class.positive]="transaction.type === 'cancellation'">
+              {{ (transaction.type === 'subscription' ? '-' : '+') + '$' + transaction.amount.toLocaleString('es-CO') }}
+            </span>
+          </div>
+          
+          <div class="transaction-details">
+            <div class="detail-group">
+              <span class="material-icons detail-icon">calendar_today</span>
+              <span class="detail-text">{{ transaction.date | date: 'dd/MM/yyyy HH:mm' }}</span>
+            </div>
+            
+            <div class="detail-group">
+              <app-badge [variant]="transaction.type === 'subscription' ? 'success' : 'warning'">
+                {{ transaction.type === 'subscription' ? 'Suscripción' : 'Cancelación' }}
+              </app-badge>
+            </div>
+            
+            @if (transaction.notificationMethod) {
+              <div class="detail-group">
+                <span class="material-icons detail-icon">notifications</span>
+                <span class="notification-badge">{{ transaction.notificationMethod.toUpperCase() }}</span>
+              </div>
+            }
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+}

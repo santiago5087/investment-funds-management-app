@@ -1,0 +1,21 @@
+@use 'variables' as *;
+
+.funds-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+  padding: 8px;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 48px 24px;
+  color: $text-secondary;
+}
+
+@media (max-width: 768px) {
+  .funds-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}

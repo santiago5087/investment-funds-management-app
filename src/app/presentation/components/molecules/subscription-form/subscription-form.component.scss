@@ -1,0 +1,50 @@
+@use 'variables' as *;
+
+.subscription-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 500px;
+}
+
+h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: $text-primary;
+}
+
+.form-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.notification-field {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.field-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: rgba(0, 0, 0, $opacity-light);
+}
+
+.radio-group {
+  display: flex;
+  gap: 24px;
+}
+
+.form-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+@media (max-width: 600px) {
+  .form-actions {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,1 +1,35 @@
-<h1>Investment Funds Management App</h1>
+<div class="app-container">
+  <nav class="navbar">
+    <div class="nav-content">
+      <div class="nav-brand">
+        <h1>BTG Fondos</h1>
+      </div>
+      <ul class="nav-links">
+        <li>
+          <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            Inicio
+          </a>
+        </li>
+        <li>
+          <a routerLink="/funds" routerLinkActive="active">
+            Fondos
+          </a>
+        </li>
+        <li>
+          <a routerLink="/subscriptions" routerLinkActive="active">
+            Mis Inversiones
+          </a>
+        </li>
+        <li>
+          <a routerLink="/transactions" routerLinkActive="active">
+            Historial
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  
+  <main class="main-content">
+    <router-outlet />
+  </main>
+</div>

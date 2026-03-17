@@ -1,0 +1,64 @@
+<mat-card class="fund-card" [class.subscribed]="isSubscribed()">
+  <div class="card-badge" *ngIf="isSubscribed()">
+    <span class="material-icons">check_circle</span>
+    <span>Suscrito</span>
+  </div>
+  
+  <mat-card-header>
+    <div class="card-icon">
+      <span class="material-icons">account_balance</span>
+    </div>
+    <div class="header-content">
+      <mat-card-title>{{ fund().name }}</mat-card-title>
+      <mat-card-subtitle>
+        <app-badge [variant]="fund().category === 'FPV' ? 'info' : 'success'">
+          {{ fund().category }}
+        </app-badge>
+      </mat-card-subtitle>
+    </div>
+  </mat-card-header>
+  
+  <mat-card-content>
+    <p class="fund-description">{{ fund().description }}</p>
+    
+    <div class="fund-details">
+      <div class="detail-item">
+        <span class="detail-icon material-icons">monetization_on</span>
+        <div class="detail-info">
+          <span class="detail-label">Monto mínimo</span>
+          <span class="detail-value">{{ '$' + fund().minimumAmount.toLocaleString('es-CO') }}</span>
+        </div>
+      </div>
+      
+      <div class="detail-item">
+        <span class="detail-icon material-icons">trending_up</span>
+        <div class="detail-info">
+          <span class="detail-label">Tipo</span>
+          <span class="detail-value">{{ fund().category === 'FPV' ? 'Voluntaria' : 'Inversión Colectiva' }}</span>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+
+  <mat-card-actions>
+    @if (isSubscribed()) {
+      <app-button 
+        variant="secondary"
+        [fullWidth]="true"
+        (clicked)="onCancel.emit(fund())"
+      >
+        <span class="material-icons">cancel</span>
+        Cancelar suscripción
+      </app-button>
+    } @else {
+      <app-button 
+        variant="primary"
+        [fullWidth]="true"
+        (clicked)="onSubscribe.emit(fund())"
+      >
+        <span class="material-icons">add_circle</span>
+        Suscribirse
+      </app-button>
+    }
+  </mat-card-actions>
+</mat-card>

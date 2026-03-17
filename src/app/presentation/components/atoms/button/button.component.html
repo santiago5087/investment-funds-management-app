@@ -1,0 +1,16 @@
+<button
+  mat-button
+  [type]="type()"
+  [disabled]="disabled()"
+  [color]="getColor()"
+  [class.full-width]="fullWidth()"
+  [class.button-basic]="variant() === 'basic'"
+  [class.button-secondary]="variant() === 'secondary'"
+  [class.button-primary]="variant() === 'primary'"
+  [class.button-accent]="variant() === 'accent'"
+  [class.button-warn]="variant() === 'warn'"
+  (click)="clicked.emit($event)"
+>
+  <ng-content></ng-content>
+</button>
+

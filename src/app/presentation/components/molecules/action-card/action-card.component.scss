@@ -1,0 +1,96 @@
+@use 'variables' as *;
+
+.action-card {
+  background: $background-default;
+  border: 2px solid transparent;
+  border-radius: 16px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  transition: all 0.3s ease;
+  box-shadow: $shadow-sm;
+  min-height: 290px;
+  
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: $shadow-xl;
+  }
+  
+  &.primary-action {
+    border-color: rgba($primary, 0.2);
+    
+    &:hover {
+      border-color: $primary;
+      background: linear-gradient(135deg, rgba($primary, 0.05) 0%, rgba($primary, 0.02) 100%);
+    }
+  }
+  
+  &.accent-action {
+    border-color: rgba($success, 0.2);
+    
+    &:hover {
+      border-color: $success;
+      background: linear-gradient(135deg, rgba($success, 0.05) 0%, rgba($success, 0.02) 100%);
+    }
+  }
+  
+  &.history-action {
+    border-color: rgba($text-secondary, 0.2);
+    
+    &:hover {
+      border-color: $text-secondary;
+      background: linear-gradient(135deg, rgba($text-secondary, 0.05) 0%, rgba($text-secondary, 0.02) 100%);
+    }
+  }
+}
+
+.action-icon-wrapper {
+  width: 64px;
+  height: 64px;
+  background: linear-gradient(135deg, $primary 0%, $primary-dark 100%);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba($primary, 0.3);
+  
+  &.accent {
+    background: linear-gradient(135deg, $success 0%, $success-dark 100%);
+    box-shadow: 0 4px 12px rgba($success, 0.3);
+  }
+  
+  &.history {
+    background: linear-gradient(135deg, #757575 0%, #424242 100%);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  .material-icons {
+    font-size: 32px;
+    color: $text-on-primary;
+  }
+}
+
+.action-content {
+  flex: 1;
+  
+  h3 {
+    margin: 0 0 12px 0;
+    font-size: 1.375rem;
+    color: $text-primary;
+    font-weight: 600;
+  }
+  
+  p {
+    margin: 0;
+    color: $text-secondary;
+    line-height: 1.5;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .action-card {
+    padding: 24px;
+  }
+}

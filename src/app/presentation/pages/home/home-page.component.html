@@ -1,0 +1,106 @@
+<div class="home-page">
+  <header class="hero">
+    <h1>Fondos de inversión BTG</h1>
+    <p class="hero-subtitle">Administra tus inversiones de manera simple y segura</p>
+  </header>
+
+  <!-- Balance Card Mejorado con Gradiente y Animación -->
+  <div class="balance-card">
+    <div class="balance-content">
+      <div class="balance-info">
+        <span class="balance-label">Saldo disponible</span>
+        <h2 class="balance-amount">${{ ((balance$ | async) || 0) | number:'1.0-0':'es-CO' }}</h2>
+        <p class="balance-description">Disponible para nuevas inversiones</p>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-icon">
+            <span class="material-icons">trending_up</span>
+          </div>
+          <div class="stat-content">
+            <span class="stat-value">{{ (subscriptions$ | async)?.length || 0 }}</span>
+            <span class="stat-label">Suscripciones Activas</span>
+          </div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-icon">
+            <span class="material-icons">receipt_long</span>
+          </div>
+          <div class="stat-content">
+            <span class="stat-value">{{ (transactions$ | async)?.length || 0 }}</span>
+            <span class="stat-label">Transacciones</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Quick Actions Cards -->
+  <section class="quick-actions-section">
+    <h2 class="section-title">Acciones Rápidas</h2>
+    <div class="actions-grid">
+      <app-action-card
+        icon="explore"
+        title="Explorar Fondos"
+        description="Descubre los fondos disponibles y encuentra la mejor opción para ti"
+        variant="primary"
+        buttonText="Ver fondos disponibles"
+        buttonVariant="primary"
+        routerLink="/funds"
+      />
+
+      <app-action-card
+        icon="account_balance_wallet"
+        title="Mis Inversiones"
+        description="Revisa y administra tus fondos suscritos actualmente"
+        variant="accent"
+        buttonText="Gestionar inversiones"
+        buttonVariant="primary"
+        routerLink="/subscriptions"
+      />
+
+      <app-action-card
+        icon="history"
+        title="Historial"
+        description="Consulta todas tus transacciones y movimientos realizados"
+        variant="history"
+        buttonText="Ver historial completo"
+        buttonVariant="primary"
+        routerLink="/transactions"
+      />
+    </div>
+  </section>
+
+  <!-- Recent Activity Section -->
+  <section class="recent-activity-section">
+    <h2 class="section-title">Resumen de Actividad</h2>
+    <div class="activity-cards">
+      <div class="activity-card">
+        <div class="activity-header">
+          <span class="material-icons">payments</span>
+          <h3>Total Invertido</h3>
+        </div>
+        <p class="activity-value">${{ getTotalInvested() | number:'1.0-0':'es-CO' }}</p>
+        <p class="activity-description">Suma de todas tus inversiones activas</p>
+      </div>
+      
+      <div class="activity-card">
+        <div class="activity-header">
+          <span class="material-icons">category</span>
+          <h3>Categorías</h3>
+        </div>
+        <p class="activity-value">{{ getUniqueCategories() }}</p>
+        <p class="activity-description">Diferentes tipos de fondos</p>
+      </div>
+      
+      <div class="activity-card">
+        <div class="activity-header">
+          <span class="material-icons">calendar_today</span>
+          <h3>Última Actividad</h3>
+        </div>
+        <p class="activity-value">{{ getLastActivityDays() }}</p>
+        <p class="activity-description">Días desde tu última transacción</p>
+      </div>
+    </div>
+  </section>
+</div>

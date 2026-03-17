@@ -1,0 +1,60 @@
+// Design System Variables
+// =====================================================
+
+// Primary Colors
+$primary: #1976d2;
+$primary-dark: #1565c0;
+$primary-light: #e3f2fd;
+
+// Text Colors
+$text-primary: #333;
+$text-secondary: #666;
+$text-disabled: #999;
+$text-on-primary: #ffffff;
+
+// Success Colors
+$success: #388e3c;
+$success-dark: #2e7d32;
+$success-light: #e8f5e9;
+$success-border: #66bb6a;
+
+// Error/Danger Colors
+$error: #d32f2f;
+$error-dark: #c62828;
+$error-light: #ffebee;
+$error-border: #ef5350;
+
+// Warning Colors
+$warning: #f57c00;
+$warning-dark: #e65100;
+$warning-light: #fff3e0;
+$warning-border: #ffb74d;
+
+// Info Colors
+$info: #1565c0;
+$info-light: #e3f2fd;
+$info-border: #64b5f6;
+
+// Background Colors
+$background-default: #ffffff;
+$background-paper: #f5f5f5;
+$background-light: #f0f0f0;
+
+// Border Colors
+$border-light: #e0e0e0;
+$border-default: #f0f0f0;
+
+// Shadows
+$shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+$shadow-md: 0 2px 8px rgba(0, 0, 0, 0.1);
+$shadow-lg: 0 4px 20px rgba(25, 118, 210, 0.3);
+$shadow-xl: 0 8px 16px rgba(0, 0, 0, 0.1);
+
+// Overlay
+$overlay-light: rgba(0, 0, 0, 0.5);
+$overlay-dark: rgba(0, 0, 0, 0.6);
+
+// Opacity values
+$opacity-light: 0.6;
+$opacity-medium: 0.8;
+$opacity-high: 0.9;

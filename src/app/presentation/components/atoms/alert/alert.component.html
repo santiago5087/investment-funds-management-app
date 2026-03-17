@@ -1,0 +1,10 @@
+<div [class]="alertClasses()" role="alert">
+  <div class="alert-content">
+    <ng-content></ng-content>
+  </div>
+  @if (dismissible()) {
+    <button class="alert-close" (click)="dismiss.emit()" aria-label="Close">
+      ×
+    </button>
+  }
+</div>

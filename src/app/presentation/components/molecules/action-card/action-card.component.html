@@ -1,0 +1,12 @@
+<div class="action-card" [class.primary-action]="variant() === 'primary'" [class.accent-action]="variant() === 'accent'" [class.history-action]="variant() === 'history'">
+  <div class="action-icon-wrapper" [class.accent]="variant() === 'accent'" [class.history]="variant() === 'history'">
+    <span class="material-icons">{{ icon() }}</span>
+  </div>
+  <div class="action-content">
+    <h3>{{ title() }}</h3>
+    <p>{{ description() }}</p>
+  </div>
+  <app-button [routerLink]="routerLink()" [variant]="buttonVariant()" [fullWidth]="true">
+    {{ buttonText() }}
+  </app-button>
+</div>

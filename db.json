@@ -1,0 +1,41 @@
+{
+  "funds": [
+    {
+      "id": "1",
+      "name": "FPV_BTG_PACTUAL_RECAUDADORA",
+      "minimumAmount": 75000,
+      "category": "FPV",
+      "description": "Fondo de pensiones voluntarias BTG Pactual orientado a la recaudación de aportes."
+    },
+    {
+      "id": "2",
+      "name": "FPV_BTG_PACTUAL_ECOPETROL",
+      "minimumAmount": 125000,
+      "category": "FPV",
+      "description": "Fondo de pensiones voluntarias BTG Pactual enfocado en Ecopetrol."
+    },
+    {
+      "id": "3",
+      "name": "DEUDAPRIVADA",
+      "minimumAmount": 50000,
+      "category": "FIC",
+      "description": "Fondo de inversión colectiva especializado en deuda privada."
+    },
+    {
+      "id": "4",
+      "name": "FDO-ACCIONES",
+      "minimumAmount": 250000,
+      "category": "FIC",
+      "description": "Fondo de inversión colectiva orientado a acciones del mercado."
+    },
+    {
+      "id": "5",
+      "name": "FPV_BTG_PACTUAL_DINAMICA",
+      "minimumAmount": 100000,
+      "category": "FPV",
+      "description": "Fondo de pensiones voluntarias BTG Pactual con estrategia dinámica."
+    }
+  ],
+  "transactions": [],
+  "subscriptions": []
+}
