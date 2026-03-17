@@ -1,0 +1,136 @@
+@use 'variables' as *;
+
+.navbar {
+  background: $background-default;
+  box-shadow: $shadow-md;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 64px;
+}
+
+.nav-brand {
+  h1 {
+    margin: 0;
+    font-size: 1.25rem;
+    color: $primary;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: scale(1.02);
+    }
+  }
+}
+
+.nav-links {
+  display: flex;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    display: flex;
+  }
+
+  a {
+    display: block;
+    padding: 8px 16px;
+    color: $text-secondary;
+    text-decoration: none;
+    font-weight: 500;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 4px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 2px;
+      background-color: $primary;
+      transition: width 0.3s ease;
+    }
+
+    &:hover {
+      background: $background-paper;
+      color: $text-primary;
+
+      &::after {
+        width: calc(100% - 32px);
+      }
+    }
+
+    &.active {
+      background: $primary-light;
+      color: $primary;
+      font-weight: 600;
+
+      &::after {
+        width: calc(100% - 32px);
+      }
+    }
+
+    &:focus {
+      outline: 2px solid $primary;
+      outline-offset: 2px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-content {
+    flex-direction: column;
+    height: auto;
+    padding: 16px;
+    gap: 16px;
+  }
+
+  .nav-brand h1 {
+    font-size: 1.125rem;
+  }
+
+  .nav-links {
+    width: 100%;
+    overflow-x: auto;
+    padding-bottom: 4px;
+
+    &::-webkit-scrollbar {
+      height: 4px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: $background-paper;
+      border-radius: 2px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: $primary-light;
+      border-radius: 2px;
+
+      &:hover {
+        background: $primary;
+      }
+    }
+
+    a {
+      white-space: nowrap;
+      font-size: 0.875rem;
+      padding: 6px 12px;
+    }
+  }
+}

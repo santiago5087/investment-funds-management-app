@@ -1,0 +1,20 @@
+<nav class="navbar">
+  <div class="nav-content">
+    <div class="nav-brand">
+      <h1>{{ appName() }}</h1>
+    </div>
+    <ul class="nav-links">
+      @for (link of navigationLinks(); track link.path) {
+        <li>
+          <a 
+            [routerLink]="link.path" 
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: link.exact }"
+          >
+            {{ link.label }}
+          </a>
+        </li>
+      }
+    </ul>
+  </div>
+</nav>
