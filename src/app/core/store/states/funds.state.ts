@@ -124,21 +124,27 @@ export class FundsState {
     if (!fund) {
       const errorMsg = 'Fondo no encontrado';
       ctx.patchState({ error: errorMsg });
-      this.notificationService.error(errorMsg);
+      this.notificationService.error('Error', 'El fondo seleccionado no existe en el sistema');
       return;
     }
 
     if (action.amount < fund.minimumAmount) {
       const errorMsg = `Monto mínimo: $${fund.minimumAmount.toLocaleString('es-CO')}`;
       ctx.patchState({ error: errorMsg });
-      this.notificationService.error(errorMsg);
+      this.notificationService.error(
+        'Monto insuficiente',
+        `El monto mínimo de inversión es $${fund.minimumAmount.toLocaleString('es-CO')}`
+      );
       return;
     }
 
     if (state.balance < action.amount) {
       const errorMsg = 'Saldo insuficiente';
       ctx.patchState({ error: errorMsg });
-      this.notificationService.error(errorMsg);
+      this.notificationService.error(
+        'Saldo insuficiente',
+        `Tu saldo actual es $${state.balance.toLocaleString('es-CO')}. Necesitas $${action.amount.toLocaleString('es-CO')}`
+      );
       return;
     }
 
@@ -171,7 +177,8 @@ export class FundsState {
 
     // Mostrar notificación de éxito
     this.notificationService.success(
-      `Suscrito a ${fund.name} por $${action.amount.toLocaleString('es-CO')}`
+      'Suscripción exitosa',
+      `Te has suscrito a ${fund.name} por $${action.amount.toLocaleString('es-CO')}`
     );
   }
 
@@ -188,7 +195,7 @@ export class FundsState {
     if (!subscription) {
       const errorMsg = 'Suscripción no encontrada';
       ctx.patchState({ error: errorMsg });
-      this.notificationService.error(errorMsg);
+      this.notificationService.error('Error', 'No se encontró la suscripción que intentas cancelar');
       return;
     }
 
@@ -212,7 +219,8 @@ export class FundsState {
 
     // Mostrar notificación de éxito
     this.notificationService.success(
-      `Suscripción cancelada. Reembolso: $${subscription.amount.toLocaleString('es-CO')}`
+      'Cancelación exitosa',
+      `Tu suscripción ha sido cancelada. Reembolso: $${subscription.amount.toLocaleString('es-CO')}`
     );
   }
 

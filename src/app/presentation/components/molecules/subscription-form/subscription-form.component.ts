@@ -107,7 +107,7 @@ export class SubscriptionFormComponent {
     const emailValue = this.emailValue();
     const control = this.subscriptionForm.controls.email;
 
-    if (method !== 'email') {
+    if (method !== 'email' || control.disabled) {
       return '';
     }
 
@@ -131,7 +131,7 @@ export class SubscriptionFormComponent {
     const phoneValue = this.phoneValue();
     const control = this.subscriptionForm.controls.phone;
 
-    if (method !== 'sms') {
+    if (method !== 'sms' || control.disabled) {
       return '';
     }
 
@@ -162,9 +162,15 @@ export class SubscriptionFormComponent {
     if (!amountValid) return false;
 
     if (notificationMethod === 'email') {
-      return this.subscriptionForm.controls.email.valid;
+      const emailControl = this.subscriptionForm.controls.email;
+      const emailValue = this.emailValue();
+      // Validar manualmente: campo habilitado, tiene valor, y es válido
+      return emailControl.enabled && emailValue.length > 0 && emailControl.valid;
     } else if (notificationMethod === 'sms') {
-      return this.subscriptionForm.controls.phone.valid;
+      const phoneControl = this.subscriptionForm.controls.phone;
+      const phoneValue = this.phoneValue();
+      // Validar manualmente: campo habilitado, tiene valor, y es válido
+      return phoneControl.enabled && phoneValue.length > 0 && phoneControl.valid;
     }
 
     return false;
@@ -179,22 +185,35 @@ export class SubscriptionFormComponent {
       const method = this.selectedNotificationMethod();
       
       if (method === 'email') {
-        this.subscriptionForm.controls.email.enable();
+        // Primero deshabilitar y limpiar phone
         this.subscriptionForm.controls.phone.disable();
         this.subscriptionForm.controls.phone.clearValidators();
+        this.subscriptionForm.controls.phone.setValue('');
+        this.subscriptionForm.controls.phone.markAsUntouched();
+        this.subscriptionForm.controls.phone.markAsPristine();
+        this.phoneTouched.set(false);
+        
+        // Luego habilitar y configurar email
         this.subscriptionForm.controls.email.setValidators([Validators.required, Validators.email]);
+        this.subscriptionForm.controls.email.enable();
+        this.subscriptionForm.controls.email.updateValueAndValidity({ emitEvent: false });
       } else if (method === 'sms') {
-        this.subscriptionForm.controls.phone.enable();
+        // Primero deshabilitar y limpiar email
         this.subscriptionForm.controls.email.disable();
         this.subscriptionForm.controls.email.clearValidators();
+        this.subscriptionForm.controls.email.setValue('');
+        this.subscriptionForm.controls.email.markAsUntouched();
+        this.subscriptionForm.controls.email.markAsPristine();
+        this.emailTouched.set(false);
+        
+        // Luego habilitar y configurar phone
         this.subscriptionForm.controls.phone.setValidators([
           Validators.required, 
           Validators.pattern(/^[0-9]{10}$/),
         ]);
+        this.subscriptionForm.controls.phone.enable();
+        this.subscriptionForm.controls.phone.updateValueAndValidity({ emitEvent: false });
       }
-      
-      this.subscriptionForm.controls.email.updateValueAndValidity({ emitEvent: false });
-      this.subscriptionForm.controls.phone.updateValueAndValidity({ emitEvent: false });
     });
   }
 

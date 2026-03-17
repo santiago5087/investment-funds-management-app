@@ -19,16 +19,27 @@
 }
 
 .nav-brand {
+  .brand-link {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+  }
+
   h1 {
     margin: 0;
     font-size: 1.25rem;
     color: $primary;
     font-weight: 700;
     letter-spacing: -0.5px;
-    transition: transform 0.2s ease;
+    transition: transform 0.2s ease, color 0.2s ease;
 
     &:hover {
       transform: scale(1.02);
+      color: $primary-dark;
+    }
+
+    &:active {
+      transform: scale(0.98);
     }
   }
 }

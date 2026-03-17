@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
+import { ToastComponent, ToastData } from '../components/toast/toast.component';
 
 export type NotificationType = 'success' | 'error' | 'warning' | 'info';
 
@@ -8,33 +9,40 @@ export type NotificationType = 'success' | 'error' | 'warning' | 'info';
 })
 export class NotificationService {
   private defaultConfig: MatSnackBarConfig = {
-    duration: 4000,
+    duration: 5000,
     horizontalPosition: 'end',
     verticalPosition: 'top',
   };
 
   constructor(private snackBar: MatSnackBar) {}
 
-  success(message: string, action: string = 'Cerrar') {
-    this.show(message, action, 'success-snackbar');
+  success(title: string, message: string = '') {
+    this.show(title, message, 'success');
   }
 
-  error(message: string, action: string = 'Cerrar') {
-    this.show(message, action, 'error-snackbar');
+  error(title: string, message: string = '') {
+    this.show(title, message, 'error');
   }
 
-  warning(message: string, action: string = 'Cerrar') {
-    this.show(message, action, 'warning-snackbar');
+  warning(title: string, message: string = '') {
+    this.show(title, message, 'warning');
   }
 
-  info(message: string, action: string = 'Cerrar') {
-    this.show(message, action, 'info-snackbar');
+  info(title: string, message: string = '') {
+    this.show(title, message, 'info');
   }
 
-  private show(message: string, action: string, panelClass: string) {
-    this.snackBar.open(message, action, {
+  private show(title: string, message: string, type: NotificationType) {
+    const data: ToastData = {
+      title,
+      message,
+      type
+    };
+
+    this.snackBar.openFromComponent(ToastComponent, {
       ...this.defaultConfig,
-      panelClass: [panelClass]
+      data,
+      panelClass: ['custom-toast']
     });
   }
 }

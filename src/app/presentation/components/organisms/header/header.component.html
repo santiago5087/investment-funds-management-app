@@ -1,7 +1,9 @@
 <nav class="navbar">
   <div class="nav-content">
     <div class="nav-brand">
-      <h1>{{ appName() }}</h1>
+      <a routerLink="/" class="brand-link">
+        <h1>{{ appName() }}</h1>
+      </a>
     </div>
     <ul class="nav-links">
       @for (link of navigationLinks(); track link.path) {
