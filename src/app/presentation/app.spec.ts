@@ -12,6 +12,6 @@ describe('App', () => {
   it('should render title', async () => {
     await render(App);
     const heading = screen.getByRole('heading', { level: 1 });
-    expect(heading).toHaveTextContent('Investment Funds Management App');
+    expect(heading).toHaveTextContent('BTG Fondos');
   });
 });
