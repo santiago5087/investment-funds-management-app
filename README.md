@@ -7,6 +7,13 @@ Una aplicación moderna para la gestión de fondos de inversión construida con 
 ![NGXS](https://img.shields.io/badge/NGXS-21.0-673AB7)
 ![Vitest](https://img.shields.io/badge/Vitest-4.0-6E9F18?logo=vitest)
 
+### URL de la App desplegada: https://investment-funds-management-app.vercel.app/
+
+## ❗❗❗  Notas importantes ❗❗❗
+- Es recomendable utilizar un correo de gmail para las notificaciones por email, ya que con uno de estos se hicieron las pruebas y funciono, ya que por utilizar un servicio gratuito no funciona con cualquier tipo de correo
+- Para la notificacion por SMS es posible que no llegue el mensaje de texto porque el operador de telefonia lo bloquea, ya que este SMS esta siendo enviado desde un numero de USA, ademas de que se utiliza el servicio en su capa gratuita por lo que no siempre va a llegar el SMS
+
+
 ## ✨ Características
 
 - 📊 **Exploración de Fondos** - Visualiza y explora fondos de inversión disponibles
@@ -142,7 +149,7 @@ npm run dev  # Si tienes este script configurado
 - ✅ Tracking de entregas
 - ✅ Sin tarjeta de crédito requerida
 
-Ver [RESEND_SETUP.md](RESEND_SETUP.md) para más detalles.
+Ver [RESEND_SETUP.md](./docs/RESEND_SETUP.md) para más detalles.
 
 ### 📱 Configuración de Twilio (SMS)
 
@@ -157,7 +164,7 @@ Ver [RESEND_SETUP.md](RESEND_SETUP.md) para más detalles.
    ```
 5. Reinicia el servidor API
 
-Ver [TWILIO_SETUP.md](TWILIO_SETUP.md) para más detalles.
+Ver [TWILIO_SETUP.md](./docs/TWILIO_SETUP.md) para más detalles.
 
 ---
 
@@ -330,8 +337,6 @@ Este proyecto está optimizado para Vercel con **cero configuración**.
 - ✅ Preview deployments para PRs
 - ✅ Rollback instantáneo
 
-Ver [VERCEL_DEPLOYMENT.md](VERCEL_DEPLOYMENT.md) para más detalles.
-
 ### Alternativas de Deployment
 
 ```bash
@@ -477,7 +482,7 @@ Este proyecto está bajo la Licencia MIT.
 
 ¿Tienes preguntas o necesitas ayuda?
 
-- 📧 Email: [tu-email@ejemplo.com]
+- 📧 Email: [santiago5087@hotmail.com]
 - 🐛 Issues: [GitHub Issues](https://github.com/santiago5087/investment-funds-management-app/issues)
 - 📚 Docs: [Angular Documentation](https://angular.dev)
 
