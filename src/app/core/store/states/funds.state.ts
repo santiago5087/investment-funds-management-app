@@ -10,7 +10,7 @@ import {
   CancelSubscription,
   ResetState,
 } from '../actions/funds.actions';
-import { FundsService } from '../../../data/services/funds.service';
+import { GetFundsUseCase } from '@domain/usecases';
 import { NotificationService } from '../../services/notification.service';
 import { EmailNotificationService } from '../../services/email-notification.service';
 import { SmsNotificationService } from '../../services/sms-notification.service';
@@ -37,7 +37,7 @@ const INITIAL_BALANCE = 500000;
 })
 @Injectable()
 export class FundsState {
-  private fundsService = inject(FundsService);
+  private getFundsUseCase = inject(GetFundsUseCase);
   private notificationService = inject(NotificationService);
   private emailNotificationService = inject(EmailNotificationService);
   private smsNotificationService = inject(SmsNotificationService);
@@ -83,7 +83,7 @@ export class FundsState {
   @Action(LoadFunds)
   loadFunds(ctx: StateContext<FundsStateModel>) {
     ctx.patchState({ loading: true, error: null });
-    return this.fundsService.getFunds().pipe(
+    return this.getFundsUseCase.execute().pipe(
       tap((funds) => {
         ctx.dispatch(new LoadFundsSuccess(funds));
       }),
