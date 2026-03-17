@@ -12,6 +12,7 @@ import {
 } from '../actions/funds.actions';
 import { FundsService } from '../../../data/services/funds.service';
 import { NotificationService } from '../../services/notification.service';
+import { EmailNotificationService } from '../../services/email-notification.service';
 import {
   InvestmentFund,
   Transaction,
@@ -37,6 +38,7 @@ const INITIAL_BALANCE = 500000;
 export class FundsState {
   private fundsService = inject(FundsService);
   private notificationService = inject(NotificationService);
+  private emailNotificationService = inject(EmailNotificationService);
 
   @Selector()
   static funds(state: FundsStateModel): InvestmentFund[] {
@@ -180,6 +182,26 @@ export class FundsState {
       'Suscripción exitosa',
       `Te has suscrito a ${fund.name} por $${action.amount.toLocaleString('es-CO')}`
     );
+
+    // Enviar email de confirmación si el método de notificación es email
+    if (action.notificationMethod === 'email' && action.email) {
+      this.emailNotificationService.sendSubscriptionConfirmation({
+        email: action.email,
+        fundName: fund.name,
+        amount: action.amount,
+        subscriptionDate: subscription.subscriptionDate,
+        notificationMethod: action.notificationMethod
+      }).pipe(
+        tap(() => {
+          console.log('Email de confirmación enviado exitosamente');
+        }),
+        catchError((error) => {
+          console.error('Error al enviar email de confirmación:', error);
+          // No mostramos error al usuario porque la suscripción ya fue exitosa
+          return of(null);
+        })
+      ).subscribe();
+    }
   }
 
   @Action(CancelSubscription)

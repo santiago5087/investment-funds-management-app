@@ -2,15 +2,65 @@
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.1.
 
+## Features
+
+- 📊 Browse and explore investment funds
+- 💰 Subscribe to funds with real-time balance tracking
+- 📧 **Email confirmations with Resend** - Automated email notifications for subscriptions
+- 📱 SMS notification support (placeholder)
+- 📈 Transaction history and portfolio management
+- 🎨 Modern UI with Material Design 3
+- 🔔 Toast notifications with beautiful design
+
+## Environment Setup
+
+### Email Notifications (Resend)
+
+This app uses [Resend](https://resend.com) to send confirmation emails. See [RESEND_SETUP.md](RESEND_SETUP.md) for detailed configuration instructions.
+
+**Quick Setup:**
+1. Get a free API key from [resend.com](https://resend.com)
+2. Copy `.env.example` to `.env` and add your key
+3. For Vercel deployment, add `RESEND_API_KEY` to environment variables
+
+## 🚀 Deployment
+
+### Deploy to Vercel
+
+This project is ready to be deployed on Vercel with zero configuration. See [VERCEL_DEPLOYMENT.md](VERCEL_DEPLOYMENT.md) for detailed deployment instructions.
+
+**Quick Deploy:**
+1. Push your code to GitHub
+2. Import project in [Vercel Dashboard](https://vercel.com/new)
+3. Add `RESEND_API_KEY` environment variable
+4. Deploy! 🎉
+
+Your app will be live with:
+- ✅ Angular frontend optimized and served via CDN
+- ✅ API endpoints at `/api/*`
+- ✅ Email notifications working
+- ✅ Automatic HTTPS
+- ✅ Global edge network
+
 ## Development server
 
-To start a local development server, run:
+To run the application locally, you need to start both the API server and the Angular app:
 
+**1. Start the API server (Terminal 1):**
 ```bash
+npm run api
+```
+This will start the JSON Server with email support at `http://localhost:3000`
+
+**2. Start the Angular app (Terminal 2):**
+```bash
+npm start
+# or
 ng serve
 ```
+Once the server is running, open your browser and navigate to `http://localhost:4200/`
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+The application will automatically reload whenever you modify any of the source files.
 
 ## Code scaffolding
 
