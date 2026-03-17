@@ -2,6 +2,7 @@
 const jsonServer = require('json-server');
 const path = require('path');
 const sendEmailHandler = require('./send-email');
+const sendSmsHandler = require('./send-sms');
 
 const server = jsonServer.create();
 const router = jsonServer.router(path.join(__dirname, '..', 'db.json'));
@@ -23,6 +24,11 @@ server.use((req, res, next) => {
 // Handle /send-email endpoint before json-server routes
 server.use('/send-email', (req, res) => {
   return sendEmailHandler(req, res);
+});
+
+// Handle /send-sms endpoint before json-server routes
+server.use('/send-sms', (req, res) => {
+  return sendSmsHandler(req, res);
 });
 
 server.use(router);

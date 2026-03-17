@@ -8,12 +8,20 @@
     {
       "src": "api/send-email.js",
       "use": "@vercel/node"
+    },
+    {
+      "src": "api/send-sms.js",
+      "use": "@vercel/node"
     }
   ],
   "routes": [
     {
       "src": "/api/send-email",
       "dest": "/api/send-email.js"
+    },
+    {
+      "src": "/api/send-sms",
+      "dest": "/api/send-sms.js"
     },
     {
       "src": "/api/(.*)",

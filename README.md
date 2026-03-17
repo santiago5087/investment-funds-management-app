@@ -7,7 +7,7 @@ This project was generated using [Angular CLI](https://github.com/angular/angula
 - 📊 Browse and explore investment funds
 - 💰 Subscribe to funds with real-time balance tracking
 - 📧 **Email confirmations with Resend** - Automated email notifications for subscriptions
-- 📱 SMS notification support (placeholder)
+- 📱 **SMS notifications with Twilio** - Send SMS confirmations to users
 - 📈 Transaction history and portfolio management
 - 🎨 Modern UI with Material Design 3
 - 🔔 Toast notifications with beautiful design
@@ -22,6 +22,16 @@ This app uses [Resend](https://resend.com) to send confirmation emails. See [RES
 1. Get a free API key from [resend.com](https://resend.com)
 2. Copy `.env.example` to `.env` and add your key
 3. For Vercel deployment, add `RESEND_API_KEY` to environment variables
+
+### SMS Notifications (Twilio)
+
+This app uses [Twilio](https://www.twilio.com) to send confirmation SMS. See [TWILIO_SETUP.md](TWILIO_SETUP.md) for detailed configuration instructions.
+
+**Quick Setup:**
+1. Get a free account with $15 USD credit at [twilio.com/try-twilio](https://www.twilio.com/try-twilio)
+2. Get your Account SID, Auth Token, and Phone Number from the Dashboard
+3. Copy `.env.example` to `.env` and add your credentials
+4. For Vercel deployment, add `TWILIO_ACCOUNT_SID`, `TWILIO_AUTH_TOKEN`, and `TWILIO_PHONE_NUMBER` to environment variables
 
 ## 🚀 Deployment
 

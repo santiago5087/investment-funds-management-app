@@ -13,6 +13,7 @@ import {
 import { FundsService } from '../../../data/services/funds.service';
 import { NotificationService } from '../../services/notification.service';
 import { EmailNotificationService } from '../../services/email-notification.service';
+import { SmsNotificationService } from '../../services/sms-notification.service';
 import {
   InvestmentFund,
   Transaction,
@@ -39,6 +40,7 @@ export class FundsState {
   private fundsService = inject(FundsService);
   private notificationService = inject(NotificationService);
   private emailNotificationService = inject(EmailNotificationService);
+  private smsNotificationService = inject(SmsNotificationService);
 
   @Selector()
   static funds(state: FundsStateModel): InvestmentFund[] {
@@ -197,6 +199,25 @@ export class FundsState {
         }),
         catchError((error) => {
           console.error('Error al enviar email de confirmación:', error);
+          // No mostramos error al usuario porque la suscripción ya fue exitosa
+          return of(null);
+        })
+      ).subscribe();
+    }
+
+    // Enviar SMS de confirmación si el método de notificación es SMS
+    if (action.notificationMethod === 'sms' && action.phone) {
+      this.smsNotificationService.sendSubscriptionConfirmation({
+        phone: action.phone,
+        fundName: fund.name,
+        amount: action.amount,
+        subscriptionDate: subscription.subscriptionDate
+      }).pipe(
+        tap(() => {
+          console.log('SMS de confirmación enviado exitosamente');
+        }),
+        catchError((error) => {
+          console.error('Error al enviar SMS de confirmación:', error);
           // No mostramos error al usuario porque la suscripción ya fue exitosa
           return of(null);
         })

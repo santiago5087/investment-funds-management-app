@@ -39,13 +39,30 @@ vercel
 
 ### 3. Configurar Variables de Entorno
 
-**IMPORTANTE**: Debes configurar tu API key de Resend en Vercel
+**IMPORTANTE**: Debes configurar las credenciales de Resend y Twilio en Vercel
 
 1. En tu proyecto de Vercel, ve a **Settings → Environment Variables**
-2. Agrega la siguiente variable:
+2. Agrega las siguientes variables:
+   
+   **Para Email (Resend)**:
    - **Name**: `RESEND_API_KEY`
    - **Value**: Tu API key real de Resend (ej: `re_abc123...`)
    - **Environments**: Marca Production, Preview y Development
+   
+   **Para SMS (Twilio)**:
+   - **Name**: `TWILIO_ACCOUNT_SID`
+   - **Value**: Tu Account SID de Twilio (ej: `ACxxxxxxxx...`)
+   - **Environments**: Marca Production, Preview y Development
+   
+   - **Name**: `TWILIO_AUTH_TOKEN`
+   - **Value**: Tu Auth Token de Twilio
+   - **Environments**: Marca Production, Preview y Development
+   
+   - **Name**: `TWILIO_PHONE_NUMBER`
+   - **Value**: Tu número de Twilio (ej: `+1234567890`)
+   - **Environments**: Marca Production, Preview y Development
+
+**Nota**: Si no vas a usar SMS, puedes omitir las variables de Twilio. El sistema funcionará solo con Email.
 
 ### 4. Actualizar URL en el Código
 
