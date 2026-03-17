@@ -21,7 +21,9 @@ export class SubscribeToFund {
   constructor(
     public fundId: string,
     public amount: number,
-    public notificationMethod: NotificationMethod
+    public notificationMethod: NotificationMethod,
+    public email?: string,
+    public phone?: string
   ) {}
 }
 

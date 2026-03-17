@@ -54,13 +54,15 @@ export class FundsPageComponent implements OnInit {
     this.selectedFund.set(null);
   }
 
-  handleSubscribe(data: { amount: number; notificationMethod: any }) {
+  handleSubscribe(data: { amount: number; notificationMethod: any; email?: string; phone?: string }) {
     if (this.selectedFund()) {
       this.store.dispatch(
         new SubscribeToFund(
           this.selectedFund()!.id,
           data.amount,
-          data.notificationMethod
+          data.notificationMethod,
+          data.email,
+          data.phone
         )
       );
       this.closeModal();

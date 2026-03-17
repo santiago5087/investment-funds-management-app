@@ -158,6 +158,8 @@ export class FundsState {
       amount: action.amount,
       date: new Date(),
       notificationMethod: action.notificationMethod,
+      email: action.email,
+      phone: action.phone,
     };
 
     ctx.patchState({

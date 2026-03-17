@@ -6,6 +6,8 @@ export interface Transaction {
   amount: number;
   date: Date;
   notificationMethod?: NotificationMethod;
+  email?: string;
+  phone?: string;
 }
 
 export type TransactionType = 'subscription' | 'cancellation';

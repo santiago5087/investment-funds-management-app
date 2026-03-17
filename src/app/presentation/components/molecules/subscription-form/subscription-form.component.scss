@@ -19,6 +19,41 @@ h2 {
   gap: 24px;
 }
 
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-input {
+  padding: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+
+  &:focus {
+    outline: none;
+    border-color: $primary;
+  }
+
+  &:disabled {
+    background-color: rgba(0, 0, 0, 0.05);
+    cursor: not-allowed;
+  }
+}
+
+.helper-text {
+  font-size: 0.75rem;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.error-text {
+  font-size: 0.75rem;
+  color: $error;
+  font-weight: 500;
+}
+
 .notification-field {
   display: flex;
   flex-direction: column;

@@ -1,24 +1,68 @@
-<form (ngSubmit)="handleSubmit()" class="subscription-form">
+<form [formGroup]="subscriptionForm" (ngSubmit)="handleSubmit()" class="subscription-form">
   <h2 mat-dialog-title>{{ fundName() }}</h2>
   
   <div class="form-content">
-    <app-input
-      label="Monto a invertir"
-      type="number"
-      placeholder="Ingrese el monto"
-      [min]="minimumAmount()"
-      [(value)]="amount"
-      [helperText]="'Monto mínimo: $' + minimumAmount().toLocaleString('es-CO')"
-      [error]="amountError"
-    />
+    <div class="form-field">
+      <label class="field-label">Monto a invertir</label>
+      <input 
+        type="number" 
+        formControlName="amount"
+        class="form-input"
+        [min]="minimumAmount()"
+        placeholder="Ingrese el monto"
+        (blur)="markAmountTouched()"
+        (input)="subscriptionForm.controls.amount.markAsDirty()"
+      />
+      <span class="helper-text">Monto mínimo: ${{ minimumAmount().toLocaleString('es-CO') }}</span>
+      @if (amountError()) {
+        <span class="error-text">{{ amountError() }}</span>
+      }
+    </div>
 
     <div class="notification-field">
       <label class="field-label">Método de notificación</label>
-      <mat-radio-group [(ngModel)]="notificationMethod" name="notification" class="radio-group">
+      <mat-radio-group formControlName="notificationMethod" class="radio-group">
         <mat-radio-button value="email">Email</mat-radio-button>
         <mat-radio-button value="sms">SMS</mat-radio-button>
       </mat-radio-group>
     </div>
+
+    @if (selectedNotificationMethod() === 'email') {
+      <div class="form-field">
+        <label class="field-label">Correo electrónico</label>
+        <input 
+          type="email" 
+          formControlName="email"
+          class="form-input"
+          placeholder="ejemplo@correo.com"
+          (blur)="markEmailTouched()"
+          (input)="subscriptionForm.controls.email.markAsDirty()"
+        />
+        <span class="helper-text">Ingrese su correo electrónico para recibir notificaciones</span>
+        @if (emailError()) {
+          <span class="error-text">{{ emailError() }}</span>
+        }
+      </div>
+    }
+
+    @if (selectedNotificationMethod() === 'sms') {
+      <div class="form-field">
+        <label class="field-label">Número de teléfono</label>
+        <input 
+          type="tel" 
+          formControlName="phone"
+          class="form-input"
+          placeholder="3001234567"
+          maxlength="10"
+          (blur)="markPhoneTouched()"
+          (input)="subscriptionForm.controls.phone.markAsDirty()"
+        />
+        <span class="helper-text">Ingrese su número de teléfono para recibir notificaciones</span>
+        @if (phoneError()) {
+          <span class="error-text">{{ phoneError() }}</span>
+        }
+      </div>
+    }
   </div>
 
   <div class="form-actions">
@@ -34,7 +78,7 @@
       type="submit"
       variant="primary"
       [fullWidth]="true"
-      [disabled]="!isValid()"
+      [disabled]="!isFormValid()"
     >
       Confirmar suscripción
     </app-button>
