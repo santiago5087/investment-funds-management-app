@@ -1,5 +1,5 @@
 import { FundsRepository } from '@domain/repositories';
-import { GetFundsUseCase, GetFundByIdUseCase } from '@domain/usecases';
+import { GetFundsUseCase } from '@domain/usecases';
 
 import { FundsImplementationRepository } from './repositories/funds/funds-implementation.repository';
 
@@ -8,11 +8,6 @@ export const DATA_PROVIDERS = [
   {
     provide: GetFundsUseCase,
     useFactory: (fundsRepo: FundsRepository) => new GetFundsUseCase(fundsRepo),
-    deps: [FundsRepository],
-  },
-  {
-    provide: GetFundByIdUseCase,
-    useFactory: (fundsRepo: FundsRepository) => new GetFundByIdUseCase(fundsRepo),
     deps: [FundsRepository],
   },
 ];

@@ -1,4 +1,4 @@
-import { NotificationMethod, TransactionType } from '../../../domain/models';
+import { NotificationMethod } from '@domain/models';
 
 // Actions for fetching funds
 export class LoadFunds {

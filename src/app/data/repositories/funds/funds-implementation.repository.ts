@@ -18,10 +18,4 @@ export class FundsImplementationRepository extends FundsRepository {
       delay(1000) // Delay de 1 segundo para apreciar el spinner
     );
   }
-
-  public override getFundById(id: string): Observable<InvestmentFund> {
-    return this.http.get<InvestmentFund>(`${this.apiUrl}/${id}`).pipe(
-      delay(1000) // Delay de 1 segundo para apreciar el spinner
-    );
-  }
 }

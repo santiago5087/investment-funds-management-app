@@ -1,4 +1,4 @@
-import { InvestmentFund, Transaction, UserSubscription } from "../../../domain/models";
+import { InvestmentFund, Transaction, UserSubscription } from "@domain/models";
 
 export interface FundsStateModel {
   funds: InvestmentFund[];

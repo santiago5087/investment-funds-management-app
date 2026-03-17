@@ -11,14 +11,14 @@ import {
   ResetState,
 } from '../actions/funds.actions';
 import { GetFundsUseCase } from '@domain/usecases';
-import { NotificationService } from '../../services/notification.service';
-import { EmailNotificationService } from '../../services/email-notification.service';
-import { SmsNotificationService } from '../../services/sms-notification.service';
+import { NotificationService } from '@core/services/notification.service';
+import { EmailNotificationService } from '@core/services/email-notification.service';
+import { SmsNotificationService } from '@core/services/sms-notification.service';
 import {
   InvestmentFund,
   Transaction,
   UserSubscription,
-} from '../../../domain/models';
+} from '@domain/models';
 import { FundsStateModel } from '../models/funds.model';
 
 
