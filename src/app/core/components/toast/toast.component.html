@@ -1,0 +1,16 @@
+<div class="toast-container" [ngClass]="'toast-' + data.type">
+  <div class="toast-icon">
+    <mat-icon>{{ getIcon() }}</mat-icon>
+  </div>
+  <div class="toast-content">
+    <h3 class="toast-title">{{ data.title }}</h3>
+    <p class="toast-message">{{ data.message }}</p>
+  </div>
+  <button 
+    mat-icon-button 
+    class="toast-close" 
+    (click)="dismiss()"
+    aria-label="Cerrar notificación">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>

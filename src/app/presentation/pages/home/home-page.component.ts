@@ -51,14 +51,24 @@ export class HomePageComponent implements OnInit {
       return 'Sin actividad';
     }
     
-    const lastTransaction = this.transactions[0];
+    // Encontrar la transacción más reciente
+    const sortedTransactions = [...this.transactions].sort((a, b) => 
+      new Date(b.date).getTime() - new Date(a.date).getTime()
+    );
+    const lastTransaction = sortedTransactions[0];
+    
+    // Comparar solo las fechas sin considerar horas
     const lastDate = new Date(lastTransaction.date);
+    lastDate.setHours(0, 0, 0, 0);
+    
     const today = new Date();
-    const diffTime = Math.abs(today.getTime() - lastDate.getTime());
-    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    today.setHours(0, 0, 0, 0);
+    
+    const diffTime = today.getTime() - lastDate.getTime();
+    const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
     
     if (diffDays === 0) return 'Hoy';
     if (diffDays === 1) return 'Ayer';
-    return `${diffDays} días`;
+    return `Hace ${diffDays} días`;
   }
 }
